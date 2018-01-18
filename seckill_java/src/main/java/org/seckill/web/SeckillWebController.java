@@ -42,7 +42,6 @@ public class SeckillWebController {
 
 	@RequestMapping(value = "/{seckillId}/detail", method = RequestMethod.GET)
 	public String exposeSeckillLink(@PathVariable("seckillId") Long seckillId, Model model) {
-		// TODO:forward和redirect的区别
 		if (seckillId == null)
 			return "redirect:/list";
 		Seckill seckill = seckillService.getSeckillById(seckillId);
