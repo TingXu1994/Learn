@@ -55,7 +55,7 @@ public class SeckillServiceImpl implements SeckillService {
 		Date startTime = seckill.getStartTime();
 		Date endTime = seckill.getEndTime();
 		/**
-		 * ？--存疑：getTime的效率问题--？
+		 * TODO:--存疑：getTime的效率问题--？
 		 */
 		if (nowTime.getTime() < startTime.getTime() || nowTime.getTime() > endTime.getTime())
 			return new Exposer(false, seckillId);
@@ -70,7 +70,7 @@ public class SeckillServiceImpl implements SeckillService {
 		Date nowTime = new Date();
 
 		/**
-		 * ?--存疑：逻辑上md5应该是和对应seckillId的Exposer的md5String比较;
+		 * TODO:--存疑：逻辑上md5应该是和对应seckillId的Exposer的md5String比较;
 		 * 但是这里也可以用getMd5(seckillId)来比较； 应该怎么规范？
 		 */
 		if (!md5.equals(getExposeEntity(seckillId).getMd5String()))
