@@ -1,6 +1,5 @@
 package org.seckill.service.impl;
 
-
 import java.util.List;
 
 import org.junit.Test;
@@ -42,22 +41,43 @@ public class SeckillServiceImplTest extends BaseTest {
 	public void testSeckillLogic() {
 		long seckillId = 1000L;
 		Exposer exposer = seckillService.getExposeEntity(seckillId);
-		if(exposer.isExpose()) {
-			logger.info("exposer={}",exposer);
+		if (exposer.isExpose()) {
+			logger.info("exposer={}", exposer);
 			long userPhone = 18811123333L;
 			String md5String = exposer.getMd5String();
 			try {
-				Excution excution = seckillService.excuteSeckill(seckillId, userPhone, md5String);
-				logger.info("excution={}",excution);
+				// Excution excution = seckillService.excuteSeckill(seckillId,
+				// userPhone,md5String);
+				// TODO:这里换成了存储过程
+				Excution excution = seckillService.excuteSeckillByProcedure(seckillId, userPhone, md5String);
+				logger.info("excution={}", excution);
 			} catch (RepeatKillException e1) {
 				logger.error(e1.getMessage());
-			}catch (SeckillClosedException e2) {
+			} catch (SeckillClosedException e2) {
 				logger.error(e2.getMessage());
-			}catch (SeckillException e) {
+			} catch (SeckillException e) {
 				logger.error(e.getMessage());
 			}
-		}else {
-			logger.info("exposer={}",exposer);
-		}	
+		} else {
+			logger.info("exposer={}", exposer);
+		}
+	}
+
+	@Test
+	public void testSeckillProcedure() {
+		long seckillId = 1000L;
+		long userPhone = 18811124444L;
+		Exposer exposer = seckillService.getExposeEntity(seckillId);
+		if (exposer.isExpose()) {
+			String md5String = exposer.getMd5String();
+			try {
+				Excution excution = seckillService.excuteSeckillByProcedure(seckillId, userPhone, md5String);
+				logger.info("excution={}", excution);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		} else {
+			logger.info("exposer={}", exposer);
+		}
 	}
 }

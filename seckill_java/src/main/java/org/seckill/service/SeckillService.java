@@ -8,6 +8,9 @@ import java.util.List;
 import org.seckill.dto.Excution;
 import org.seckill.dto.Exposer;
 import org.seckill.entity.Seckill;
+import org.seckill.exception.RepeatKillException;
+import org.seckill.exception.SeckillClosedException;
+import org.seckill.exception.SeckillException;
 
 public interface SeckillService {
 
@@ -21,6 +24,11 @@ public interface SeckillService {
 	Exposer getExposeEntity(long seckillId);
 
 	// 执行秒杀并返回执行结果
-	Excution excuteSeckill(long seckillId, Long userPhone, String md5);
+	Excution excuteSeckill(long seckillId, Long userPhone, String md5)
+			throws SeckillException, SeckillClosedException, RepeatKillException;
+	
+	// 通过存储过程 执行秒杀操作
+	Excution excuteSeckillByProcedure(long seckillId, Long userPhone, String md5)
+			throws SeckillException, SeckillClosedException, RepeatKillException;
 
 }

@@ -27,7 +27,7 @@ public enum SeckillStateEnum {
 		this.statusInfo = statusInfo;
 	}
 
-	public SeckillStateEnum indexof(int status) {
+	public static SeckillStateEnum indexof(int status) {
 		for (SeckillStateEnum seckillStateEnum : values()) {
 			if (seckillStateEnum.getStatus() == status) {
 				return seckillStateEnum;

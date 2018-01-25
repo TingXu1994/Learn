@@ -79,7 +79,7 @@ public class SeckillWebController {
 	public ResponseResult<Excution> excute(@PathVariable("seckillId") long seckillId,
 			@PathVariable("md5String") String md5String,
 			@CookieValue(value = "userPhone", required = false) long userPhone) {
-		logger.info("excution");
+		//logger.info("excution");
 		try {
 			Excution excution = seckillService.excuteSeckill(seckillId, userPhone, md5String);
 			return new ResponseResult<>(true, excution);

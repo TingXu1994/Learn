@@ -18,7 +18,7 @@ var seckill = {
 	handleSeckill : function(seckillId, seckillBox) {
 		seckillBox
 				.html('<button class="btn btn-primary btn-lg" id="SeckillBtn">开始秒杀</button>');
-		var seckillURL = seckill.URL.exposer(seckillId);
+		var seckillURL = seckill.URL.exeposer(seckillId);
 		$
 				.post(
 						seckillURL,
